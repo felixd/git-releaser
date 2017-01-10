@@ -5,7 +5,7 @@
 ## Installation
 
 1. Clone this repo
-2. Copy [releaser.sh] file to Your projects
+2. Copy [releaser.sh](releaser.sh) file to Your projects
 3. Modify it as needed
 4. Use it.
 
