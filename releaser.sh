@@ -6,7 +6,7 @@ DEVELOP_BRANCH="develop"
 MASTER_BRANCH="master"
 RELEASE_PREFIX="release/"
 VERSION_FILE="VERSION"
-LINE='---------------------------------------------------------------------------------------'
+LINE='--------------------------------------------------------------------------------'
 
 if [ "`git branch --list $DEVELOP_BRANCH`" ]
 then
@@ -66,7 +66,7 @@ case $LEVEL in
 esac
 
 NEW_VERSION="$VNUM1.$VNUM2.$VNUM3"
-RELEASE_BRANCH="$RELEASE_PREFIX$NEW_VERSION"
+RELEASE_BRANCH=$RELEASE_PREFIX$NEW_VERSION
 
 echo ''
 echo "Updating $VERSION to $NEW_VERSION"
