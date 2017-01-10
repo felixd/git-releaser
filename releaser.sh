@@ -24,15 +24,21 @@ else
 fi
 
 if [[ `git status --porcelain` ]]; then
-  echo "Changes detected. Pleas commit them first."
-  exit -1  
+  echo $LINE
+  echo "Changes detected. Pleas commit them first!!!"
+  echo $LINE
+  git status
+  echo $LINE
+  echo "Changes detected. Pleas commit them first!!!"
+  echo $LINE
+  exit -1
 fi
 
 VERSION=`git describe --abbrev=0 --tags`
 if [ -z $VERSION ]; then
+ echo $LINE
  echo "Looks like this is Your first release."
- echo " * Made 1st COMMIT? [git add * && git commit -am 'Initial commit']"
- echo " * I am setting release version to: 0.0.0"
+ echo $LINE
  VNUM1=0 ; VNUM2=0 ; VNUM3=0
 else
  echo "Current Version: $VERSION"
