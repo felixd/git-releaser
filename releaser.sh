@@ -40,7 +40,7 @@ if [ $DEVELOP_BRANCH = $(git rev-parse --symbolic-full-name --abbrev-ref HEAD) ]
 else
   echo "We are not on DEVELOP branch [$DEVELOP_BRANCH]. Should I checkout?"
   echo "$(git rev-parse --symbolic-full-name --abbrev-ref HEAD) -> $DEVELOP_BRANCH"
-  read -n1 -p "[y/n]" RESPONSE
+  read -n1 -p "[y/n]\n" RESPONSE
   case $RESPONSE in
     y) git checkout $DEVELOP_BRANCH ;;
     n)
