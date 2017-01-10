@@ -2,10 +2,11 @@
 # Copyright: Paweł 'felixd' Wojciechowski - Outsourcing IT - Konopnickiej.Com
 # Year: 2017
 
-DEVELOP_BRANCH=develop
-MASTER_BRANCH=master
+DEVELOP_BRANCH="develop"
+MASTER_BRANCH="master"
+RELEASE_PREFIX="release/"
 VERSION_FILE="VERSION"
-LINE='---------------------------------------------------------------------------------------'
+LINE='--------------------------------------------------------------------------------'
 
 if [ "`git branch --list $DEVELOP_BRANCH`" ]
 then
@@ -65,7 +66,7 @@ case $LEVEL in
 esac
 
 NEW_VERSION="$VNUM1.$VNUM2.$VNUM3"
-RELEASE_BRANCH="release/$NEW_VERSION"
+RELEASE_BRANCH=$RELEASE_PREFIX$NEW_VERSION
 
 echo ''
 echo "Updating $VERSION to $NEW_VERSION"
@@ -88,11 +89,6 @@ git merge --no-ff --no-edit $RELEASE_BRANCH
 echo "TAG after: $(git describe --abbrev=0 --tags)"
 git branch -d $RELEASE_BRANCH
 echo "TAG after removing $RELEASE_BRANCH: $(git describe --abbrev=0 --tags)"
-echo $LINE
-
-GIT_COMMIT=`git rev-parse HEAD`
-echo "Git commit: $GIT_COMMIT"
-NEEDS_TAG=`git describe --contains $GIT_COMMIT`
 echo $LINE
 
 if [ $NEW_VERSION = $(git describe --abbrev=0 --tags) ]; then
