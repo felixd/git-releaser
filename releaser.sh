@@ -35,17 +35,38 @@ if [[ `git status --porcelain` ]]; then
   exit -1
 fi
 
+if [ $DEVELOP_BRANCH = $(git rev-parse --symbolic-full-name --abbrev-ref HEAD) ]; then
+  echo "We are on DEVELOP branch [$DEVELOP_BRANCH]"
+else
+  echo "We are not on DEVELOP branch [$DEVELOP_BRANCH]. Should I checkout?"
+  echo $LINE
+  echo "$(git rev-parse --symbolic-full-name --abbrev-ref HEAD) -> $DEVELOP_BRANCH"
+  echo $LINE
+  read -n1 -p "[y/n] " RESPONSE
+  case $RESPONSE in
+    y) git checkout $DEVELOP_BRANCH ;;
+    n)
+     echo "Please come back when You are ready. Exiting..."
+     exit -1
+     ;;
+    *)
+     echo "Wrong answer. Please run application again."
+     exit -1
+     ;;
+  esac
+fi
+
 echo $LINE
 VERSION=`git describe --abbrev=0 --tags`
 if [ -z $VERSION ]; then
- echo "Looks like this is Your first release."
- VNUM1=0 ; VNUM2=0 ; VNUM3=0
+  echo "Looks like this is Your first release."
+  VNUM1=0 ; VNUM2=0 ; VNUM3=0
 else
- echo "Current Version: $VERSION"
- VERSION_BITS=(${VERSION//./ })
- VNUM1=${VERSION_BITS[0]}
- VNUM2=${VERSION_BITS[1]}
- VNUM3=${VERSION_BITS[2]}
+  echo "Current Version: $VERSION"
+  VERSION_BITS=(${VERSION//./ })
+  VNUM1=${VERSION_BITS[0]}
+  VNUM2=${VERSION_BITS[1]}
+  VNUM3=${VERSION_BITS[2]}
 fi
 
 echo $LINE
@@ -92,15 +113,15 @@ echo "TAG after removing $RELEASE_BRANCH: $(git describe --abbrev=0 --tags)"
 echo $LINE
 
 if [ $NEW_VERSION = $(git describe --abbrev=0 --tags) ]; then
- echo "New release completed. Pushing new TAGs and new release on $MASTER_BRANCH branch."
- git push --tags
- git push origin master
- echo $LINE
- echo "Version change: $VERSION -> $NEW_VERSION"
- echo $LINE
- echo "Git Status:"
- git status
+  echo "New release completed. Pushing new TAGs and new release on $MASTER_BRANCH branch."
+  git push --tags
+  git push origin master
+  echo $LINE
+  echo "Version change: $VERSION -> $NEW_VERSION"
+  echo $LINE
+  echo "Git Status:"
+  git status
 else
- echo "New version tag [$NEW_VERSION] was not found in current branch"
- git status
+  echo "New version tag [$NEW_VERSION] was not found in current branch"
+  git status
 fi
