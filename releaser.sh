@@ -89,7 +89,7 @@ echo "TAG after: $(git describe --abbrev=0 --tags)"
 git branch -d $RELEASE_BRANCH
 echo "TAG after removing $RELEASE_BRANCH: $(git describe --abbrev=0 --tags)"
 echo $LINE
-# Get current hash and see if it already has a tag
+
 GIT_COMMIT=`git rev-parse HEAD`
 echo "Git commit: $GIT_COMMIT"
 NEEDS_TAG=`git describe --contains $GIT_COMMIT`
