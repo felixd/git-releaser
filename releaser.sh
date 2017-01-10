@@ -35,10 +35,9 @@ if [[ `git status --porcelain` ]]; then
 fi
 
 VERSION=`git describe --abbrev=0 --tags`
+echo $LINE
 if [ -z $VERSION ]; then
- echo $LINE
  echo "Looks like this is Your first release."
- echo $LINE
  VNUM1=0 ; VNUM2=0 ; VNUM3=0
 else
  echo "Current Version: $VERSION"
