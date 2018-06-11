@@ -5,19 +5,32 @@
 * Automagically do everything for You ;)  **Just Try It**
 
 ```bash
-$ ./git-releaser.sh
+./git-releaser.sh
+
++--------------+
+| Git Releaser |
++--------------+
+
 Branch [develop] exists.
 Branch [master] exists.
 We are on DEVELOP branch [develop]
--------------------------------------
+------------------------------------------------
 Current Version: 1.2.0
--------------------------------------
+------------------------------------------------
 Please select Your release number:
- * [1] - Major - 2.0.0
- * [2] - Minor - 1.3.0
- * [3] - Patch - 1.2.1
--------------------------------------
-[1],[2],[3]:
+* [1] - Major - 2.0.0
+* [2] - Minor - 1.3.0
+* [3] - Patch - 1.2.1
+------------------------------------------------
+To exit press any other key.
+------------------------------------------------
+[1],[2],[3]: 3
+Updating 1.2.0 to 1.2.1
+Switched to a new branch 'release/1.2.1'
+[release/1.2.1 fbc802b] Release 1.2.1
+1 file changed, 1 insertion(+), 1 deletion(-)
+Release 1.2.1. Updating version file [/VERSION]
+...
 ```
 
 ## Installation
