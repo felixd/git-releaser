@@ -18,17 +18,42 @@ echo ""
 
 if [ "`git branch --list $DEVELOP_BRANCH`" ]
 then
-   echo "Branch [$DEVELOP_BRANCH] exists."
+ echo "Branch [$DEVELOP_BRANCH] exists."
 else
-  echo "I'm not able to find DEVELOP branch. [Looking for: $DEVELOP_BRANCH]"
+ echo "DEVELOP branch [$DEVELOP_BRANCH] does not exist. Should I create it?"
+ echo $LINE
+ read -n1 -p "[y/n] " RESPONSE
+ case $RESPONSE in
+  y) git checkout -b $DEVELOP_BRANCH ;;
+  n)
+   echo "Please come back when You are ready. Exiting..."
+   exit -1
+  ;;
+  *)
+  echo "Wrong answer. Please run application again."
   exit -1
+  ;;
+ esac
 fi
 
 if [ "`git branch --list $MASTER_BRANCH`" ]
 then
    echo "Branch [$MASTER_BRANCH] exists."
 else
-  echo "I'm not able to find MASTER branch. [Looking for: $MASTER_BRANCH]"
+  echo "MASTER branch [$MASTER_BRANCH] does not exist. Should I create it?"
+  echo $LINE
+  read -n1 -p "[y/n] " RESPONSE
+  case $RESPONSE in
+   y) git checkout -b $MASTER_BRANCH ;;
+   n)
+    echo "Please come back when You are ready. Exiting..."
+    exit -1
+   ;;
+   *)
+   echo "Wrong answer. Please run application again."
+   exit -1
+   ;;
+  esac
   exit -1
 fi
 
