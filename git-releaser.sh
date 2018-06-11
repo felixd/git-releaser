@@ -10,6 +10,12 @@ RELEASE_PREFIX="release/"
 VERSION_FILE="VERSION"
 LINE='--------------------------------------------------------------------------------'
 
+echo ""
+echo " +--------------+ "
+echo " | Git Releaser | "
+echo " +--------------+ "
+echo ""
+
 if [ "`git branch --list $DEVELOP_BRANCH`" ]
 then
    echo "Branch [$DEVELOP_BRANCH] exists."
@@ -72,10 +78,12 @@ else
 fi
 
 echo $LINE
-echo "Please select Your relese number:"
+echo "Please select Your release number:"
 echo " * [1] - Major - $((VNUM1+1)).0.0"
 echo " * [2] - Minor - $VNUM1.$((VNUM2+1)).0"
 echo " * [3] - Patch - $VNUM1.$VNUM2.$((VNUM3+1))"
+echo $LINE
+echo "To exit press any other key."
 echo $LINE
 
 read -n1 -p "[1],[2],[3]: " LEVEL

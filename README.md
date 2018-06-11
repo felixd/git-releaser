@@ -1,6 +1,24 @@
 # Git Releaser
 
-**Git Releaser**. Helps correctly enumerate your projects releases.
+* Helps You correctly enumerate your project releases with simple terminal tool
+* Automatically marks release commit with correct **tag**
+* Automagically do everything for You ;)  **Just Try It**
+
+```bash
+$ ./git-releaser.sh
+Branch [develop] exists.
+Branch [master] exists.
+We are on DEVELOP branch [develop]
+-------------------------------------
+Current Version: 1.2.0
+-------------------------------------
+Please select Your release number:
+ * [1] - Major - 2.0.0
+ * [2] - Minor - 1.3.0
+ * [3] - Patch - 1.2.1
+-------------------------------------
+[1],[2],[3]:
+```
 
 ## Installation
 
@@ -30,5 +48,3 @@ RELEASE_PREFIX = "release/"
 ## Author
 
 Paweł 'felixd' Wojciechowski - [Outsourcing IT - Konopnickiej.Com](http://konopnickiej.com)
-
-**First relased**: 10 Jan 2017
