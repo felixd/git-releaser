@@ -38,10 +38,10 @@ Release 1.2.1. Updating version file [/VERSION]
 In Your project, root folder, execute command:
 
 ```bash
-wget -O - https://gitlab.com/felixd/git-releaser/install/release.sh | bash
+wget -O - https://gitlab.com/felixd/git-releaser/raw/master/install/release.sh | bash
 ```
 
-For security reasons check [release.sh](https://gitlab.com/felixd/git-releaser/install/release.sh) file before executing command.
+For security reasons check [install/release.sh](install/release.sh) file before executing command.
 
 Command will:
 * Create `release.sh` file in your project folder which will be used for releases
