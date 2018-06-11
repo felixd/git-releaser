@@ -8,7 +8,7 @@ if [ -d "git-releaser/" ]; then
  git-releaser/git-releaser.sh
 else
 
- git clone https://gitlab.com/felixd/git-releaser/
+ git clone https://gitlab.com/felixd/git-releaser.git
 
  if [ -f "release.sh" ]; then
   chmod +x release.sh
