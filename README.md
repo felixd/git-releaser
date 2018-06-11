@@ -38,7 +38,7 @@ Release 1.2.1. Updating version file [/VERSION]
 In Your project, root folder, execute command:
 
 ```bash
-wget -O - https://gitlab.com/felixd/git-releaser/raw/master/install/release.sh | bash
+wget https://gitlab.com/felixd/git-releaser/raw/master/install/release.sh && bash release.sh
 ```
 
 For security reasons check [install/release.sh](install/release.sh) file before executing command.
